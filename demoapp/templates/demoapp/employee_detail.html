@@ -1,0 +1,15 @@
+{% extends "demoapp/base_demoapp.html" %}
+{% block content %}
+  <button onclick="history.back();">Back</button>
+      {# object is the variable used by DetailView #}
+  <h3>{{ object }}</h3>
+  <a href="{% url 'demoapp:employee_update' object.pk %}">Edit</a>
+  <a href="{% url 'demoapp:employee_delete' object.pk %}">Delete</a>
+  <br>
+
+  {# object_list is the list variable used by ListView #}
+  {{ object }} works for {{ object.company }}
+
+
+{% endblock %}
+

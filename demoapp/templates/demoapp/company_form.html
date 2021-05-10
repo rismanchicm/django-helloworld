@@ -1,0 +1,9 @@
+<button onclick="history.back();">Back</button>
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+  {% if is_update %}
+    <input type="submit" value="Update">
+  {% else %}
+    <input type="submit" value="Create">
+  {% endif %}
+</form>

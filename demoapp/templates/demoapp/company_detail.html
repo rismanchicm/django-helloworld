@@ -1,0 +1,19 @@
+{% extends "demoapp/base_demoapp.html" %}
+{% block content %}
+  <button onclick="history.back();">Back</button>
+      {# object is the variable used by DetailView #}
+  <h3>{{ object }}</h3>
+  <a href="{% url 'demoapp:company_update' object.pk %}">Edit</a>
+  <a href="{% url 'demoapp:company_delete' object.pk %}">Delete</a>
+<ul>
+  {# object_list is the list variable used by ListView #}
+  {{ object }} Employee's:
+  {% for employee in object.employee_set.all %}
+      <li>
+        <a href="{{ employee.get_absolute_url }}">{{ employee.first_name }} {{ employee.last_name }}</a>
+      </li>
+  {% endfor %}
+
+</ul>
+{% endblock %}
+

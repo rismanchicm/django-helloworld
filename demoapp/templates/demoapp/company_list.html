@@ -1,0 +1,24 @@
+{% extends "demoapp/base_demoapp.html" %}
+{% block content %}
+  <h3>Company's:</h3>
+<ul>
+
+<a href="{% url 'demoapp:company_create' %}">Add Company</a>
+<a href="{% url 'demoapp:employee_create' %}">Add Employee</a>
+  {# object_list is the list variable used by ListView #}
+  {% for company in object_list %}
+    <li>
+{#      <a href="{% url 'demoapp:company_detail' company.pk %}">{{ company.name }}</a>#}
+      <a href="{{ company.get_absolute_url }}">{{ company.name }}</a>
+      <ul>
+        {% for employee in company.employee_set.all %}
+          <li>
+            {{ employee.first_name }} {{ employee.last_name }}
+          </li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
+

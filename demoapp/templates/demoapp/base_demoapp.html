@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block app %}
+  <h3><a href="{% url 'demoapp:app_home' %}">Demo App</a></h3>
+  <a href="{% url 'demoapp:company_list' %}">Companies</a>
+{% endblock %}
